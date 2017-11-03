@@ -10,3 +10,22 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+function s($data, $msg = null){
+    return json([
+        'code'=>200,
+        'data'=>$data,
+        'msg'=>m_lang($msg)
+    ]);
+}
+
+function e($msg, $code=0){
+    return json([
+        'code'=>400+$code,
+        'data'=>null,
+        'msg'=>m_lang($msg)
+    ]);
+}
+
+function m_lang($msg){
+    return is_null($msg)||$msg === ""?"":lang($msg);
+}

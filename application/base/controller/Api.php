@@ -18,4 +18,11 @@ class Api extends Controller
 
     }
 
+    protected function checkAccess(){
+        if(input('post.appkey_id') == config('app.appkey_id') && input('post.appkey_secret') == config('app.appkey_secret')){
+            return false;
+        }
+        return true;
+    }
+
 }

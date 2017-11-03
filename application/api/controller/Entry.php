@@ -6,12 +6,12 @@
  * Time: 1:29
  */
 
-namespace app\controller;
+namespace app\api\controller;
 
 
 use app\base\controller\Api;
 
 class Entry extends Api
 {
-    
+
 }

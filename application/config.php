@@ -10,6 +10,17 @@
 // +----------------------------------------------------------------------
 
 return [
+    'app' => [
+        'appkey_id' => 'JhlwRmmrOppZV6x1',
+        'appkey_secret' => 'LLQVtu4QfUv84igNbRFMSpnq'
+    ],
+    'baiduai_sdk' => [
+        'api_key' => 'j8i1hGrwt8Dp600vkXmAFjfC',
+        'key_secret' => '5ymnqTXwqsitWEVPir2yMnwzg3v67sBP',
+        'access_token' => '24.2e9b64fc3c2ffc495c840aa17e0ddb45.2592000.1512334669.282335-10322694',
+        'enable_generate' => false,
+    ],
+
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
@@ -17,7 +28,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
