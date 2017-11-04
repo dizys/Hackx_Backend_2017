@@ -12,13 +12,17 @@
 return [
     'app' => [
         'appkey_id' => 'JhlwRmmrOppZV6x1',
-        'appkey_secret' => 'LLQVtu4QfUv84igNbRFMSpnq'
+        'appkey_secret' => 'LLQVtu4QfUv84igNbRFMSpnq',
+        'uploads_users_url' => 'http://172.20.10.10/uploads/users/'
     ],
     'baiduai_sdk' => [
         'api_key' => 'j8i1hGrwt8Dp600vkXmAFjfC',
         'key_secret' => '5ymnqTXwqsitWEVPir2yMnwzg3v67sBP',
         'access_token' => '24.2e9b64fc3c2ffc495c840aa17e0ddb45.2592000.1512334669.282335-10322694',
         'enable_generate' => false,
+    ],
+    'microsoft_sdk' => [
+        'subscription_key' => 'd0fa263acbb34c179a3f6d78458c99f8',
     ],
 
     // +----------------------------------------------------------------------

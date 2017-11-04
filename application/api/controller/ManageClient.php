@@ -39,4 +39,42 @@ class ManageClient extends Api
         return s('OK');
     }
 
+    public function face_set()
+    {
+        $id=$_POST["id"];
+        $name=$_POST["name"];
+        $balance=$_POST["balance"];
+        $phone=$_POST["phone"];
+        $data=['id'=>$id,
+            'name'=>$name,
+            'balance'=>$balance,
+            'phone'=>$phone
+        ];
+        Db::name('user')->insert($data);
+        $data=new FaceSet();
+        $ret = $data->run(input("post.id"),input("post.image"));
+        return s([
+            'ret' => $ret
+        ]);
+    }
+
+
+    public function face_identify()
+    {
+        $data=new FaceIdentify();
+        $ret = $data->run(input("post.image"));
+        $id=$ret['result'][0]['uid'];
+        $data = Db::name('user')
+            ->where("id",$id)
+            ->select();
+        $name=$data[0]['name'];
+        $balance=$data[0]['balance'];
+        $phone=$data[0]['phone'];
+        return s([
+            'name' => $name,
+            'balance'=>$balance,
+            'phone'=>$phone
+        ]);
+    }
+
 }

@@ -29,3 +29,15 @@ function e($msg, $code=0){
 function m_lang($msg){
     return is_null($msg)||$msg === ""?"":lang($msg);
 }
+
+function runEmotion($object){
+    $bestGuess = null;
+    $bestValue = 0;
+    foreach ($object as $key=>$value){
+        if($value > $bestValue){
+            $bestValue = $value;
+            $bestGuess = $key;
+        }
+    }
+    return $bestGuess;
+}

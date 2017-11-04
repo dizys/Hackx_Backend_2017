@@ -10,7 +10,7 @@ class Index extends Controller
     public function index()
     {
         $data = new ImageClassifyDish();
-        $ret = $data->run(input("post.image"));
+        $ret = $data->test();
         return s([
             'ret' => $ret
         ]);
