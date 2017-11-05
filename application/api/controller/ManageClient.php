@@ -11,6 +11,7 @@ namespace app\api\controller;
 
 use app\base\controller\Api;
 use app\base\model\MsgStream;
+use app\base\model\User;
 
 class ManageClient extends Api
 {
@@ -41,26 +42,47 @@ class ManageClient extends Api
 
     public function face_set()
     {
-        $id=$_POST["id"];
-        $name=$_POST["name"];
-        $balance=$_POST["balance"];
-        $phone=$_POST["phone"];
-        $data=['id'=>$id,
-            'name'=>$name,
-            'balance'=>$balance,
-            'phone'=>$phone
-        ];
-        Db::name('user')->insert($data);
+        if($this->checkAccess()){
+            return e('access denied');
+        }
+        $name=input("post.name");
+        $balance=input("post.balance");
+        $phone=input("post.phone");
+        $user = new User();
+        $user->name = $name;
+        $user->balance = $balance;
+        $user->phone = $phone;
+        $user->save();
         $data=new FaceSet();
-        $ret = $data->run(input("post.id"),input("post.image"));
+        $ret = $data->run($user->id,input("post.image"));
         return s([
             'ret' => $ret
         ]);
     }
 
+    public function set_balance(){
+        if($this->checkAccess()){
+            return e('access denied');
+        }
+        $id = input("post.name");
+        $name=input("post.name");
+        $balance=input("post.balance");
+        $userModel = new User();
+        $user = $userModel->where("id = '$id' or name = '$name'")->find();
+        if(is_null($user)){
+            return e("user not found", 1);
+        }
+        $user->balance = $balance;
+        $user->save();
+        return s("OK");
+    }
+
 
     public function face_identify()
     {
+        if($this->checkAccess()){
+            return e('access denied');
+        }
         $data=new FaceIdentify();
         $ret = $data->run(input("post.image"));
         $id=$ret['result'][0]['uid'];

@@ -52,7 +52,7 @@ class WindowClient extends Api
         $gdname = controller("GuessDishName", "domain");
         $calorie = null;
         $name = $gdname->guess($dish_image, $calorie);
-        if($name == false){
+        if($name == false || is_null($name)){
             return e('cant recognize',1);
         }
         if($name == "非菜"){
